@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.exception.BaseballException;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Balls {
     private final int DIGIT = 3;
@@ -14,8 +15,14 @@ public class Balls {
         this.balls = mapBall(origins);
     }
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
+
     private List<Ball> mapBall(List<Integer> origins) {
-        return origins.stream().map(Ball::new).toList();
+        return IntStream.range(0, DIGIT)
+                .mapToObj(i -> new Ball(origins.get(i), i))
+                .toList();
     }
 
     private void validateDuplication(List<Integer> origins) {

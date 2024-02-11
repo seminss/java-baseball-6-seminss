@@ -4,10 +4,12 @@ import baseball.exception.BaseballException;
 
 public class Ball {
     private final int number;
+    private final int place;
 
-    public Ball(int number) {
+    public Ball(int number, int place) {
         validateRange(number);
         this.number = number;
+        this.place = place;
     }
 
     private void validateRange(int number) {
@@ -16,4 +18,13 @@ public class Ball {
         }
     }
 
+    public GameResult getResult(Ball ball) {
+        if (this.place == ball.place && this.number == ball.number) {
+            return GameResult.STRIKE;
+        }
+        if (this.number == ball.number) {
+            return GameResult.BALL;
+        }
+        return GameResult.NOTHING;
+    }
 }
