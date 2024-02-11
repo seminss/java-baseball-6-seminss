@@ -19,6 +19,27 @@ public class Balls {
         return balls;
     }
 
+    public Result play(Balls others) {
+        Result result = new Result();
+        for (Ball other : others.getBalls()) {
+            Decision decision = makeDecision(other);
+            result.updateResult(decision);
+        }
+        return result;
+    }
+
+    /**
+     * ball가 this의 balls에서 STRIKE나 BALL을 뽑을 수 있는지 확인.
+     * 없다면 NOTHING
+     */
+    private Decision makeDecision(Ball ball) {
+        return this.balls.stream()
+                .map(b -> b.getDecision(ball))
+                .filter(Decision::isNotNothing)
+                .findFirst()
+                .orElse(Decision.NOTHING);
+    }
+
     private List<Ball> mapBall(List<Integer> origins) {
         return IntStream.range(0, DIGIT)
                 .mapToObj(i -> new Ball(origins.get(i), i))

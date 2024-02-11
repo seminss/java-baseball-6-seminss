@@ -27,4 +27,12 @@ public class Ball {
         }
         return Decision.NOTHING;
     }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "number=" + number +
+                ", place=" + place +
+                '}';
+    }
 }
