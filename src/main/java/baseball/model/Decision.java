@@ -1,5 +1,5 @@
 package baseball.model;
 
-public enum GameResult {
+public enum Decision {
     BALL, STRIKE, NOTHING;
 }

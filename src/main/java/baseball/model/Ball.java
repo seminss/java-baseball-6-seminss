@@ -18,13 +18,13 @@ public class Ball {
         }
     }
 
-    public GameResult getResult(Ball ball) {
+    public Decision getDecision(Ball ball) {
         if (this.place == ball.place && this.number == ball.number) {
-            return GameResult.STRIKE;
+            return Decision.STRIKE;
         }
         if (this.number == ball.number) {
-            return GameResult.BALL;
+            return Decision.BALL;
         }
-        return GameResult.NOTHING;
+        return Decision.NOTHING;
     }
 }
