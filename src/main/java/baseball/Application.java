@@ -9,6 +9,6 @@ public class Application {
     public static void main(String[] args) {
         BaseballController baseballController = new BaseballController(
                 new InputView(),new OutputView(), new BaseballService());
-        baseballController.start();
+        baseballController.play();
     }
 }

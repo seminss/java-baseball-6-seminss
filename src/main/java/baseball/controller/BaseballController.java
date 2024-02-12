@@ -1,5 +1,7 @@
 package baseball.controller;
 
+import baseball.dto.NumberRequest;
+import baseball.model.Result;
 import baseball.service.BaseballService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
@@ -15,8 +17,15 @@ public class BaseballController {
         this.service = baseballService;
     }
 
-    public void start() {
+    public void play() {
         outputView.printStartMessage();
-        inputView.readBallNumbers();
+        service.startGame();
+        NumberRequest request = inputView.readBallNumbers();
+        Result result = service.getResult(request);
+        outputView.showResult(result);
+        if (result.getStrike() == 3) {
+            outputView.printEndMessage();
+            outputView.printRestartMessage();
+        }
     }
 }
