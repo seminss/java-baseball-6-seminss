@@ -19,13 +19,22 @@ public class BaseballController {
 
     public void play() {
         outputView.printStartMessage();
-        service.startGame();
-        NumberRequest request = inputView.readBallNumbers();
-        Result result = service.getResult(request);
-        outputView.showResult(result);
-        if (result.getStrike() == 3) {
-            outputView.printEndMessage();
-            outputView.printRestartMessage();
+        game:
+        while (true) {
+            service.startGame();
+            while (true) {
+                NumberRequest request = inputView.readBallNumbers();
+                Result result = service.getResult(request);
+                outputView.showResult(result);
+                if (result.getStrike() == 3) {
+                    outputView.printEndMessage();
+                    if (!inputView.readRestartNumber().isRestart()) {
+                        break game;
+                    }
+                    break;
+                }
+            }
+
         }
     }
 }
