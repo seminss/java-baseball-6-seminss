@@ -6,7 +6,7 @@ import baseball.model.Computer;
 import baseball.model.Result;
 
 public class BaseballService {
-    public void startGame() {
+    public void createRoundAnswer() {
         Computer.getInstance().createAnswer();
     }
 

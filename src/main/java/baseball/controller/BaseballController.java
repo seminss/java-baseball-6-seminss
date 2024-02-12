@@ -21,14 +21,14 @@ public class BaseballController {
         outputView.printStartMessage();
         game:
         while (true) {
-            service.startGame();
+            service.createRoundAnswer();
             while (true) {
                 NumberRequest request = inputView.readBallNumbers();
                 Result result = service.getResult(request);
                 outputView.showResult(result);
                 if (result.getStrike() == 3) {
                     outputView.printEndMessage();
-                    if (!inputView.readRestartNumber().isRestart()) {
+                    if (!inputView.readRestartNumber().doRestart()) {
                         break game;
                     }
                     break;
