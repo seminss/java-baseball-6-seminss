@@ -2,6 +2,7 @@ package baseball.model;
 
 import baseball.exception.BaseballException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -56,5 +57,10 @@ public class Balls {
         if (origins.size() != DIGIT) {
             throw new BaseballException("세 자리 수가 아닙니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(balls.toArray());
     }
 }
